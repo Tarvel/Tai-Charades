@@ -1,0 +1,27 @@
+{
+  "music": {
+    "easy": ["Guitar", "Piano", "Drums", "Singer", "Wizkid", "Burna Boy", "Violin", "DJ", "Dancing", "Rapping", "Davido", "Microphone", "Headphones", "Asake", "Tems", "Flute", "Pop Star", "Opera", "Choir"],
+    "medium": ["Electric Guitar", "Afrobeats", "Music Video", "Marching Band", "Rock and Roll", "Acoustic", "Jazz Hands", "Seyi Vibez", "Grammy Award", "Record Player", "Synthesizer", "Country Music", "Boy Band", "Air Guitar", "Lip Syncing", "Beatboxing", "Stage Dive", "Soundcheck", "Sheet Music"],
+    "hard": ["Bohemian Rhapsody", "Phantom of the Opera", "Last Last", "Ojuelegba", "Stairway to Heaven", "One Hit Wonder", "Symphony Orchestra", "A Cappella", "Mosh Pit", "Backstage Pass", "Album Cover", "Vinyl Record", "High Note", "Bass Drop", "Intermission", "Autotune", "Music Festival", "Garage Band", "Fuji Music"]
+  },
+  "sports": {
+    "easy": ["Soccer", "Basketball", "Goal", "Referee", "Super Eagles", "Tennis", "Boxing", "Swimming", "Running", "Volleyball", "Goalkeeper", "Corner Kick", "Throw-in", "Yellow Card", "Red Card", "Whistle", "Team", "Trophy", "Football Boots"],
+    "medium": ["Penalty Kick", "Header", "Nutmeg", "Offside", "Victor Osimhen", "Tobi Amusan", "Table Tennis", "Badminton", "Bicycle Kick", "Free Kick", "Dribbling", "Half-time", "Substitutes", "Linesman", "VAR", "Crossbar", "Defensive Wall", "D'Tigress", "Handball"],
+    "hard": ["Park the Bus", "Hat-trick", "Clean Sheet", "Tiki-taka", "Panenka", "Counter-attack", "Extra Time", "Offside Trap", "Goal Line Technology", "Advantage Rule", "Tactical Foul", "False Nine", "High Press", "Direct Free Kick", "Aggregate Score", "Injury Time", "Woodwork", "Box-to-Box Midfielder", "Cruyff Turn"]
+  },
+  "locations": {
+    "easy": ["Beach", "School", "Forest", "Hospital", "Cinema", "Airport", "Library", "Zoo", "Farm", "Park", "Kitchen", "Office", "Church", "Gym", "Supermarket", "Museum", "Castle", "Prison", "Market"],
+    "medium": ["Eiffel Tower", "Statue of Liberty", "Great Wall of China", "Grand Canyon", "Pyramids of Giza", "Space Station", "Submarine", "Desert Island", "Lekki Bridge", "Post Office", "Police Station", "Fire Station", "Skyscraper", "Amusement Park", "Gas Station", "Hotel Lobby", "Nightclub", "Treehouse", "Cemetery"],
+    "hard": ["Mount Everest", "Aso Rock", "The White House", "Hollywood Sign", "The North Pole", "Amazon Rainforest", "Stonehenge", "Colosseum", "Times Square", "Niagara Falls", "Mount Rushmore", "Sahara Desert", "The Bermuda Triangle", "Great Barrier Reef", "Buckingham Palace", "Eiffel Tower", "Yellowstone Park", "Silicon Valley", "Antarctica"]
+  },
+  "movies_tv": {
+    "easy": ["Batman", "Spiderman", "Elsa", "Shrek", "Star Wars", "Mickey Mouse", "Harry Potter", "Superman", "Minions", "Simba", "Aki", "Pawpaw", "Thanos", "Mr Ibu", "Wednesday Addams", "Barbie", "Iron Man", "Aladdin"],
+    "medium": ["Jurassic Park", "Stranger Things", "Squid Game", "Tony Stark", "Home Alone", "Men in Black", "James Bond", "Ghostbusters", "The Matrix", "Avatar", "Pirates of the Caribbean", "Indiana Jones", "Eniola Salami", "Toy Town", "Toyin Tomato", "Papa Ajasco", "Jon Snow", "Walter White", "King of Boys"],
+    "hard": ["Mission Impossible", "The Wizard of Oz", "Lord of the Rings", "Forrest Gump", "Pulp Fiction", "The Godfather", "Game of Thrones", "Interstellar", "Inception", "The Dark Knight", "Everything Everywhere All At Once", "The Shining", "Anikulapo", "Parasite", "The Truman Show", "Lisbeth Salander", "Beatrix Kiddo", "Makanaki", "Scar (Shanty Town)"]
+  },
+  "actions_jobs": {
+    "easy": ["Doctor", "Teacher", "Chef", "Firefighter", "Police Officer", "Pilot", "Nurse", "Artist", "Baker", "Driver", "Farmer", "Waiter", "Student", "Baby", "Cooking Noodles", "Janitor", "Soldier", "Clown", "Astronaut"],
+    "medium": ["Architect", "Plumber", "Electrician", "Hairdresser", "Librarian", "Scientist", "Reporter", "Photographer", "Lifeguard", "Gardener", "Lawyer", "Mailman", "Walking under the rain", "Mechanic", "Butcher", "Tailor", "Detective", "Shunting for bus", "Diver"],
+    "hard": ["Stock Broker", "Archaeologist", "Personal Trainer", "Surgeon", "Software Engineer", "Interpreter", "Bouncer", "Stuntman", "Gravedigger", "Wedding Planner", "Lighthouse Keeper", "Professional Gamer", "Influencer/Content Creator", "Barista", "Haggling in Market", "fighting a wild animal", "Undercover Agent", "Vulcanizer", "Agbero"]
+  }
+}

@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Press Start 2P', cursive;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* CRT EFFECTS */
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.25) 50%
+  ),
+  linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.06),
+    rgba(0, 255, 0, 0.02),
+    rgba(0, 0, 255, 0.06)
+  );
+  background-size: 100% 4px, 3px 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.crt-flicker {
+  animation: flicker 0.15s infinite;
+  pointer-events: none;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.975; transform: translate(0, 0); }
+  5% { opacity: 0.985; transform: translate(1px, 0); }
+  10% { opacity: 0.970; transform: translate(-1px, 0); }
+  15% { opacity: 0.990; transform: translate(0, 1px); }
+  20% { opacity: 0.980; transform: translate(0, -1px); }
+  25% { opacity: 0.960; transform: translate(1px, 1px); }
+  30% { opacity: 0.985; transform: translate(-1px, -1px); }
+  35% { opacity: 0.975; transform: translate(0, 0); }
+  100% { opacity: 1.000; transform: translate(0, 0); }
+}
+
+/* STAR ANIMATION */
+@keyframes star-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.star {
+  position: absolute;
+  background-color: #fff;
+  width: 2px;
+  height: 2px;
+  border-radius: 0;
+}
+
+/* RETRO UI UTILITIES */
+@layer components {
+  .arcade-button {
+    @apply border-4 border-black px-6 py-4 relative active:translate-y-1 transition-transform;
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+  }
+
+  .raised-card {
+    @apply border-4 border-black p-6 bg-retro-black;
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+  }
+
+  .neon-text-cyan {
+    text-shadow: 2px 2px #000, 0 0 10px #00ffff;
+  }
+}
