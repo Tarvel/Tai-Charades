@@ -5,8 +5,9 @@ const POINTS = { easy: 10, medium: 25, hard: 50 };
 
 const GameScreen = ({ category, difficulty, data, group, groups, onTurnEnd }) => {
     const [word, setWord] = useState('');
-    const [timeLeft, setTimeLeft] = useState(60);
-    const [isActive, setIsActive] = useState(true);
+    const [timeElapsed, setTimeElapsed] = useState(0);
+    const [isTimerRunning, setIsTimerRunning] = useState(false);
+    const [timerStarted, setTimerStarted] = useState(false);
     const [showResult, setShowResult] = useState(null);
 
     useEffect(() => {
@@ -18,23 +19,26 @@ const GameScreen = ({ category, difficulty, data, group, groups, onTurnEnd }) =>
     }, [category, difficulty, data]);
 
     useEffect(() => {
-        if (!isActive || timeLeft <= 0) {
-            if (timeLeft <= 0 && isActive) {
-                setIsActive(false);
-                setShowResult('fail');
-                setTimeout(() => onTurnEnd(0), 1500);
-            }
-            return;
+        let interval;
+        if (isTimerRunning) {
+            interval = setInterval(() => {
+                setTimeElapsed(prev => prev + 1);
+            }, 1000);
         }
-        const timer = setInterval(() => setTimeLeft(prev => prev - 1), 1000);
-        return () => clearInterval(timer);
-    }, [isActive, timeLeft, onTurnEnd]);
+        return () => clearInterval(interval);
+    }, [isTimerRunning]);
 
     const handleResult = (won) => {
-        setIsActive(false);
+        setIsTimerRunning(false);
         setShowResult(won ? 'win' : 'fail');
         const points = won ? POINTS[difficulty] : 0;
         setTimeout(() => onTurnEnd(points), 1200);
+    };
+
+    const formatTime = (seconds) => {
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
     };
 
     return (
@@ -57,9 +61,9 @@ const GameScreen = ({ category, difficulty, data, group, groups, onTurnEnd }) =>
                         <span className="text-sm font-pixel" style={{ color: group.color }}>{group.name}</span>
                     </div>
                     <div className="flex flex-col items-end">
-                        <span className="text-[8px] text-gray-400 mb-1 font-pixel">TIME LEFT</span>
-                        <span className={`text-xl font-pixel ${timeLeft <= 10 ? 'text-red-500 animate-pulse' : 'text-neon-lime'}`}>
-                            {timeLeft.toString().padStart(2, '0')}
+                        <span className="text-[8px] text-gray-400 mb-1 font-pixel">STOPWATCH</span>
+                        <span className={`text-xl font-pixel ${isTimerRunning ? 'text-neon-lime animate-pulse' : 'text-gray-500'}`}>
+                            {formatTime(timeElapsed)}
                         </span>
                     </div>
                 </div>
@@ -83,28 +87,55 @@ const GameScreen = ({ category, difficulty, data, group, groups, onTurnEnd }) =>
                             )}
                         </motion.div>
                     ) : (
-                        <motion.div
-                            key="word"
-                            initial={{ opacity: 0, scale: 0.5 }}
-                            animate={{
-                                opacity: 1,
-                                scale: 1,
-                                y: [0, -8, 8, -8, 0],
-                            }}
-                            transition={{
-                                y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-                                duration: 0.5,
-                            }}
-                            className="raised-card w-full max-w-md aspect-video flex flex-col items-center justify-center"
-                            style={{ borderColor: group.color }}
-                        >
-                            <span className="text-[8px] text-gray-500 mb-3 font-pixel uppercase">
-                                {category.replace('_', ' ')} // {difficulty}
-                            </span>
-                            <h2 className="text-2xl md:text-3xl font-pixel text-white text-center px-4 leading-relaxed">
-                                {word || "LOADING..."}
-                            </h2>
-                        </motion.div>
+                        <div className="flex flex-col items-center gap-8">
+                            <motion.div
+                                key="word"
+                                initial={{ opacity: 0, scale: 0.5 }}
+                                animate={{
+                                    opacity: 1,
+                                    scale: 1,
+                                    y: [0, -8, 8, -8, 0],
+                                }}
+                                transition={{
+                                    y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+                                    duration: 0.5,
+                                }}
+                                className="raised-card w-full max-w-md aspect-video flex flex-col items-center justify-center"
+                                style={{ borderColor: group.color }}
+                            >
+                                <span className="text-[8px] text-gray-500 mb-3 font-pixel uppercase">
+                                    {category.replace('_', ' ')} // {difficulty}
+                                </span>
+                                <h2 className="text-2xl md:text-3xl font-pixel text-white text-center px-4 leading-relaxed">
+                                    {word || "LOADING..."}
+                                </h2>
+                            </motion.div>
+
+                            {!timerStarted && (
+                                <motion.button
+                                    whileHover={{ scale: 1.1 }}
+                                    whileTap={{ scale: 0.9 }}
+                                    onClick={() => {
+                                        setIsTimerRunning(true);
+                                        setTimerStarted(true);
+                                    }}
+                                    className="arcade-button bg-neon-cyan text-black font-pixel px-8 py-4 text-sm"
+                                >
+                                    START TIMER
+                                </motion.button>
+                            )}
+
+                            {isTimerRunning && (
+                                <motion.button
+                                    whileHover={{ scale: 1.1 }}
+                                    whileTap={{ scale: 0.9 }}
+                                    onClick={() => setIsTimerRunning(false)}
+                                    className="arcade-button bg-orange-500 text-black font-pixel px-8 py-4 text-sm"
+                                >
+                                    STOP TIMER
+                                </motion.button>
+                            )}
+                        </div>
                     )}
                 </AnimatePresence>
             </div>
